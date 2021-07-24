@@ -57,7 +57,7 @@ export default function Login(props) {
 
     setLoader(true);
     try {
-     
+      props.navigation.navigate('Home');
     } catch (err) {
       setLoader(false);
       console.log('err', err);
@@ -72,10 +72,7 @@ export default function Login(props) {
         extraScrollHeight={50}
         contentContainerStyle={GlobalStyles.flexGrow1}>
         <View style={styles.dataContainer}>
-          <Image
-            style={styles.logo}
-            source={LocalIcons.pngIconSet.logo}
-          />
+          <Image style={styles.logo} source={LocalIcons.pngIconSet.logo} />
           <View style={styles.fieldContainer}>
             <View style={styles.labelContainer}>
               <Text

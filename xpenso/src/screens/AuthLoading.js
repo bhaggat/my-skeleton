@@ -4,19 +4,18 @@ import Colors from '../constants/Colors';
 import RNBootSplash from 'react-native-bootsplash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function AuthLoadingScreen(props) {
-
+export default function AuthLoading(props) {
   useEffect(() => {
     async function getUserToken() {
       let user = JSON.parse(await AsyncStorage.getItem('user'));
       let navigationParams = {};
-      let pageName = 'Login';
+      let pageName = 'Home';
       if (user) {
         pageName = 'Home';
-    }
-    RNBootSplash.hide({
-    fade: true,
-    });
+      }
+      RNBootSplash.hide({
+        fade: true,
+      });
       props.navigation.replace(pageName, navigationParams);
     }
 
