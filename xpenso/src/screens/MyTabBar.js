@@ -16,12 +16,18 @@ export default function MyTabBar({state, navigation}) {
       alignItems: 'center',
       justifyContent: 'space-around',
     },
-    tabContainer: {
-      justifyContent: 'center',
-      alignItems: 'center',
+    outerTabContainer: {
       height: getBottomSpace() + 55,
       flexGrow: 1,
-      borderRadius: 2,
+      justifyContent: 'center',
+      overflow: 'hidden',
+    },
+    tabContainer: {
+      borderRadius: 42,
+      marginVertical: -20,
+      flexGrow: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     activeTabContainer: {},
   });
@@ -46,29 +52,30 @@ export default function MyTabBar({state, navigation}) {
         }
         const isFocused = state.index === index;
         return (
-          <TouchableOpacity
-            containerStyle={[
-              styles.tabContainer,
-              isFocused ? styles.activeTabContainer : {},
-            ]}
-            key={route.name}
-            accessible={true}
-            accessibilityRole="button"
-            accessibilityState={isFocused ? {selected: true} : {}}
-            accessibilityLabel={route.name}
-            activeOpacity={1}
-            extraButtonProps={{
-              rippleColor: Colors.primaryTilt,
-            }}
-            onPress={() => onPress(route, isFocused)}>
-            <CustomIcons
-              style={[styles.tabIcon]}
-              color={isFocused ? Colors.primary : Colors.primaryInvert}
-              size={26}
-              type={route.params.type}
-              name={route.params.iconName}
-            />
-          </TouchableOpacity>
+          <View key={route.name} style={styles.outerTabContainer}>
+            <TouchableOpacity
+              containerStyle={[
+                styles.tabContainer,
+                isFocused ? styles.activeTabContainer : {},
+              ]}
+              accessible={true}
+              accessibilityRole="button"
+              accessibilityState={isFocused ? {selected: true} : {}}
+              accessibilityLabel={route.name}
+              activeOpacity={1}
+              extraButtonProps={{
+                rippleColor: Colors.primaryTilt,
+              }}
+              onPress={() => onPress(route, isFocused)}>
+              <CustomIcons
+                style={[styles.tabIcon]}
+                color={isFocused ? Colors.primary : Colors.primaryInvert}
+                size={26}
+                type={route.params.type}
+                name={route.params.iconName}
+              />
+            </TouchableOpacity>
+          </View>
         );
       })}
     </View>

@@ -83,7 +83,7 @@ export default function Settings(props) {
           <View style={styles.titleContainer}>
             <Text style={styles.title}>App Settings</Text>
           </View>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={toggleDarkMode}
             activeOpacity={1}
             extraButtonProps={{
@@ -98,7 +98,7 @@ export default function Settings(props) {
               onValueChange={toggleDarkMode}
               value={isDarkMode}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             onPress={toggleSwitch}
             activeOpacity={1}
